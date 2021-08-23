@@ -1,0 +1,13 @@
+<strings>
+    <string id="AppName">PomodoroTimer</string>
+    
+    <string id="MessageWork">Time to work</string>
+	<string id="MessageBreak">Time to rest</string>
+	
+    <string id="MessageStart">Tap the screen to start</string>
+    <string id="MessagePause">Tap the screen to pause</string>
+    <string id="MessageResume">Tap the screen to resume</string>
+
+    <string id="MenuLabelReset">Reset</string>
+    <string id="menu_label_2">Item 2</string>
+</strings>
