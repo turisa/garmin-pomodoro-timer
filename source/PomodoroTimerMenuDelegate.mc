@@ -2,6 +2,7 @@ import Toybox.Lang;
 import Toybox.System;
 import Toybox.WatchUi;
 
+
 class PomodoroTimerMenuDelegate extends WatchUi.MenuInputDelegate {
     hidden var _timerInfo;
 
@@ -17,7 +18,7 @@ class PomodoroTimerMenuDelegate extends WatchUi.MenuInputDelegate {
             WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
             WatchUi.pushView(
                 dialog,
-                new ConfirmationDelegate(),
+                new ResetConfirmationDelegate(_timerInfo),
                 WatchUi.SLIDE_IMMEDIATE
             );
         }
