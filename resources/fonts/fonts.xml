@@ -1,3 +1,4 @@
 <fonts>
 <font id="anton" antialias="true" filename="anton.fnt"/>
+<font id="anton_small" antialias="true" filename="anton_small.fnt"/>
 </fonts>
