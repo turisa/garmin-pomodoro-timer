@@ -15,9 +15,9 @@ class PomodoroTimerView extends WatchUi.View {
     hidden var _timerInfo;
     
     // String resources.
-    hidden var _messageWork;
-    hidden var _messageBreak;
-    hidden var _messageStart;
+    hidden var _labelWork;
+    hidden var _labelBreak;
+    hidden var _labelStart;
     
     function initialize(timerInfo) {
         View.initialize();
@@ -55,9 +55,9 @@ class PomodoroTimerView extends WatchUi.View {
     // Loads the resources.
     function onLayout(dc as Dc) as Void {
         setLayout(Rez.Layouts.MainLayout(dc));
-        _messageWork = WatchUi.loadResource(Rez.Strings.MessageWork);
-        _messageBreak = WatchUi.loadResource(Rez.Strings.MessageBreak);
-        _messageStart = WatchUi.loadResource(Rez.Strings.MessageStart);
+        _labelWork = WatchUi.loadResource(Rez.Strings.LabelWork);
+        _labelBreak = WatchUi.loadResource(Rez.Strings.LabelBreak);
+        _labelStart = WatchUi.loadResource(Rez.Strings.LabelStart);
     }
 
     // Updates the view.
@@ -87,7 +87,7 @@ class PomodoroTimerView extends WatchUi.View {
     // Sets the message display.
     function setMessageDisplay() {
         var view = View.findDrawableById("MessageDisplay") as Text;
-        var message = _timerInfo.roundCount % 2 == 0 ? _messageWork : _messageBreak;
+        var message = _timerInfo.roundCount % 2 == 0 ? _labelWork : _labelBreak;
         view.setText(message);
     }
     
