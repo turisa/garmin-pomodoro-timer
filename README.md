@@ -5,7 +5,7 @@
 
 <p>This app was made for fun and to explore the possibilities of the Garmin SDK. As such, it lacks certain features. More features may be added in the future. <p>
 
-<h2>Installation guide</h2>
+<h2>Usage</h2>
 
 The app is still in development, but it can be <a href="https://developer.garmin.com/connect-iq/connect-iq-basics/your-first-app">side loaded</a>!.
 
