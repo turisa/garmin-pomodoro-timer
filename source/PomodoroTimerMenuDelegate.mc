@@ -15,7 +15,9 @@ class PomodoroTimerMenuDelegate extends WatchUi.MenuInputDelegate {
         if (item == :item_1) {
             var message = "Reset timer?";
             var dialog = new WatchUi.Confirmation(message);
+            
             WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
+         
             WatchUi.pushView(
                 dialog,
                 new ResetConfirmationDelegate(_timerInfo),

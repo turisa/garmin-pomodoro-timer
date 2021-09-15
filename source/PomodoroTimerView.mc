@@ -22,23 +22,28 @@ class PomodoroTimerView extends WatchUi.View {
     function initialize(timerInfo) {
         View.initialize();
         _timerInfo = timerInfo;
+        
         if (_timerInfo.roundCount == null || _timerInfo.secondsLeft == null) {
             _timerInfo.roundCount = 0;
             _timerInfo.secondsLeft = WORK_DURATION;
         }
+        
         new Timer.Timer().start(method(:updateTimerInfo), 1000, true);
     }
         
     // Updates the timer info.
     function updateTimerInfo() {
         _timerInfo.secondsLeft--;
+        
         if (_timerInfo.secondsLeft <= 0) {
             _timerInfo.roundCount = (_timerInfo.roundCount + 1) % 10;
+            
             if (_timerInfo.roundCount % 2 == 0) {
                 _timerInfo.secondsLeft = WORK_DURATION;
             } else {
                 _timerInfo.secondsLeft = _timerInfo.roundCount == 9 ? LONG_BREAK_DURATION : BREAK_DURATION;
             }
+            
             vibrate();
         }
     }
@@ -55,6 +60,7 @@ class PomodoroTimerView extends WatchUi.View {
     // Loads the resources.
     function onLayout(dc as Dc) as Void {
         setLayout(Rez.Layouts.MainLayout(dc));
+        
         _labelWork = WatchUi.loadResource(Rez.Strings.LabelWork);
         _labelBreak = WatchUi.loadResource(Rez.Strings.LabelBreak);
         _labelStart = WatchUi.loadResource(Rez.Strings.LabelStart);
@@ -66,34 +72,42 @@ class PomodoroTimerView extends WatchUi.View {
         setMessageDisplay();
         setTimerDisplay();
         setTimeDisplay();
+        
         View.onUpdate(dc);
     }
     
     // Sets the pomodoro count display.
     function setPomodoroCountDisplay() {
-        var view = View.findDrawableById("PomodoroCountDisplay") as Text;
+        var view = View.findDrawableById("PomodoroCountDisplay");
+        
         var pomodoroCount = ((_timerInfo.roundCount)/ 2.0).toNumber() + 1;
         var pomodoroCountString = "#" + pomodoroCount.toString();
+        
         view.setText(pomodoroCountString);
     }
     
     // Sets the timer display.
     function setTimerDisplay() {
-        var view = View.findDrawableById("TimerDisplay") as Text;
+        var view = View.findDrawableById("TimerDisplay");
+        
         var minutesLeft = ((_timerInfo.secondsLeft - 1)/ 60.0).toNumber() + 1;
+        
         view.setText(minutesLeft.toString());
     }
     
     // Sets the message display.
     function setMessageDisplay() {
-        var view = View.findDrawableById("MessageDisplay") as Text;
+        var view = View.findDrawableById("MessageDisplay");
+        
         var message = _timerInfo.roundCount % 2 == 0 ? _labelWork : _labelBreak;
+        
         view.setText(message);
     }
     
     // Sets the time display.
     function setTimeDisplay() {
-        var view = View.findDrawableById("TimeDisplay") as Text;
+        var view = View.findDrawableById("TimeDisplay");
+        
         var clockTime = System.getClockTime();
         var hourString = Lang.format(
             "$1$:$2$", 
@@ -102,6 +116,7 @@ class PomodoroTimerView extends WatchUi.View {
                 clockTime.min.format("%02d")
             ]
         );
+        
         view.setText(hourString);   
     }
 }
